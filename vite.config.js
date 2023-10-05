@@ -26,4 +26,5 @@ export default defineConfig({
     '/*.{js,css,html,ico,png,svg,jpg,woff2}']
   }
    })],
+   base: '/Tricksee-ios/'
 })
