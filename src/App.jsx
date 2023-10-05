@@ -29,16 +29,12 @@ function App() {
     stopRecording();
   }
   const handleLoadDone = ()=>{
-    console.log(requestAccess);;
     setLoading(false);
-    requestAccess();//get motion access
-    startRecording();
-    stopRecording();//get mic access
   }
   return (
     <>{loading?
         <div className="u-absolute u-layerTop u-fill">
-          <Preloader loadDone={handleLoadDone}/>
+          <Preloader loadDone={handleLoadDone} getPermission={requestAccess}/>
         </div>
       :<></>}
       <div className="u-relative viewport">
@@ -52,8 +48,8 @@ function App() {
         {breathing?<></>:<CTA setBreathing={handleStartBreathing}/>}
         <NavBar setThumb={setThumbSwiper} setIndex={handleChange}/>
       </div>
-      {/* <div className="spacer u-paper">
-      </div> */}
+      <div className="spacer u-paper">
+      </div>
     </>
   );
 }
