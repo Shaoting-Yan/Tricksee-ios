@@ -29,7 +29,8 @@ function App() {
     stopRecording();
   }
   const handleLoadDone = ()=>{
-    console.log("here");
+    console.log("here")
+    console.log(requestAccess);;
     setLoading(false);
     requestAccess();//get motion access
     startRecording();
