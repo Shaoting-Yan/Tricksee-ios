@@ -29,7 +29,6 @@ function App() {
     stopRecording();
   }
   const handleLoadDone = ()=>{
-    console.log("here")
     console.log(requestAccess);;
     setLoading(false);
     requestAccess();//get motion access
@@ -53,8 +52,8 @@ function App() {
         {breathing?<></>:<CTA setBreathing={handleStartBreathing}/>}
         <NavBar setThumb={setThumbSwiper} setIndex={handleChange}/>
       </div>
-      <div className="spacer u-paper">
-      </div>
+      {/* <div className="spacer u-paper">
+      </div> */}
     </>
   );
 }
