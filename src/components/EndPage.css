@@ -1,0 +1,30 @@
+.startVector{
+    position:absolute;
+}
+
+.StartPage-container{
+    width:100%;
+    height:100%;
+    padding-left:var(--l);
+    padding-top:var(--l);
+}
+
+.face{
+    top:-162px;
+    right:-92px;
+}
+
+.tags{
+    margin-top:var(--xl);
+}
+
+.EPage-container .u-bold,.u-h1{
+    letter-spacing: -1.4px;
+    line-height: 100%;
+}
+.StartPage-container .u-regular{
+    margin-top:var(--l);
+    width:230px;
+    word-break: break-word;
+}
+

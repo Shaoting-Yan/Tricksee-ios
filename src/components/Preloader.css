@@ -1,0 +1,6 @@
+.overlay{
+    box-sizing:content-box;
+    -webkit-backdrop-filter: blur(12.5px);
+    backdrop-filter: blur(12.5px);
+    border-top:black solid var(--thick);
+}

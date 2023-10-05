@@ -1,0 +1,13 @@
+.TopBar-container{
+    top:0px;
+    height:40px;
+    width:100%;
+    border-bottom:solid black var(--thick);
+}
+
+.TopBar-menu{
+    right:0px;
+    width:76px;
+    height:100%;
+    border-left:solid black var(--thin);
+}

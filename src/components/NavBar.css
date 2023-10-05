@@ -1,0 +1,14 @@
+.NavBar-container{
+    bottom:0px;
+    height:72px;
+    width:100%;
+    justify-content: flex-end;
+}
+
+.indicator-container{
+    bottom:0px;
+    height:72px;
+    width:100%;
+    border-top:solid black var(--thick);
+    z-index:1;
+}

@@ -1,0 +1,26 @@
+.Thumbnails-container{
+    height:100%;
+    width:100%;
+}
+
+.Thumbnails-swiper{
+    width:100%;
+    height:100%;
+}
+
+.Thumbnails-swiper .swiper-slide{
+    background:rgb(218, 216, 215);
+}
+
+.Thumbnails-swiper .swiper-slide-thumb-active {
+    background:none;
+}
+
+.Thumbnails-swiper img{
+    box-sizing: border-box;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    /* border-right: solid black var(--thin); */
+}
+  

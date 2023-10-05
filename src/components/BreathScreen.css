@@ -1,0 +1,17 @@
+.BreathScreen-container{
+    width:100%;
+    height:50px;
+    overflow:hidden;
+    border-top: 2px solid #FFF;
+    -webkit-backdrop-filter: blur(12.5px);
+    backdrop-filter: blur(12.5px);
+}
+
+.breathAnimate{
+    opacity:25%;
+}
+
+.breathText{
+    padding: var(--l) var(--l);
+}
+

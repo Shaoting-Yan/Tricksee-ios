@@ -1,0 +1,9 @@
+.CTA-container{
+    left: 50%;
+    transform: translate(-50%, 0);
+    width:80px;
+    height:80px;
+    bottom:100px;
+    border-radius:50%;
+    border:solid black var(--thin);
+}
