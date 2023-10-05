@@ -42,7 +42,7 @@ function App() {
           <Preloader loadDone={handleLoadDone}/>
         </div>
       :<></>}
-      <div>
+      <div className="u-relative viewport">
         <TopBar title={themeList[currIndex]}/>
         <div className="u-absolute u-fill u-layer0 middle-container">
           <div className="u-relative u-fill">
@@ -52,6 +52,8 @@ function App() {
         </div>
         {breathing?<></>:<CTA setBreathing={handleStartBreathing}/>}
         <NavBar setThumb={setThumbSwiper} setIndex={handleChange}/>
+      </div>
+      <div className="spacer u-paper">
       </div>
     </>
   );
