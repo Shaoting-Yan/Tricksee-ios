@@ -25,7 +25,7 @@ function App() {
     startRecording();
   }
   const handleEndBreathing = ()=>{
-    setBreathing(false);
+    setBreathing(false);//hello
     stopRecording();
   }
   const handleLoadDone = ()=>{
