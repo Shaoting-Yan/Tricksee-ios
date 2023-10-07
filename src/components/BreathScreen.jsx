@@ -36,7 +36,7 @@ export default function(props){
                         setText("Tap to stop breath");
                         setStarting(false);
                         setLooping(true);
-                        animate(progress,14,{duration:14,repeat:Infinity});
+                        animate(progress,[0,14],{duration:14,repeat:Infinity});
                     });
         }else{
             setText("Start breath");
