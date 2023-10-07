@@ -100,7 +100,7 @@ export default function(props){
                     {
                         letOut?
                         <div className="u-regular u-text u-relative notice">
-                        Breathe harder and <br/>see what happens. 
+                        Breathe harder and see <br/> what happens. 
                         </div>:
                         <></>
                     }
