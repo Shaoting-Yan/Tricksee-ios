@@ -2,7 +2,7 @@ import React, {useCallback, useRef,useState,useEffect} from "react";
 import {motion,useAnimate} from "framer-motion";
 import "./Preloader.css";
 import background from "./assets/preloadBackground.svg";
-import handleArrow from "./assets/handleArrow.svg";
+import tap from "./assets/tap.svg";
 import FadeLoader from "react-spinners/ClipLoader";
 
 export default function({loadDone,getPermission}){
@@ -37,10 +37,7 @@ export default function({loadDone,getPermission}){
                 </div>
                 <div id="handle" className="u-absoluteTop u-flexColumn 
                 u-flex-alignCenter u-regular u-title u-hide">
-                    <svg width="32" height="56" viewBox="0 0 32 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1.99994 39.642L16.1421 53.7841M16.1421 53.7841L30.2842 39.642M16.1421 53.7841L16.1421 -2.85407e-05" 
-                            stroke="black" strokeWidth="3" strokeLinecap="square"/>
-                    </svg>
+                    <img src={tap}/>
                     <div>Tap to enter</div>
                 </div>
             </motion.div>

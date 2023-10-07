@@ -2,7 +2,7 @@
     position:absolute;
 }
 
-.StartPage-container{
+.EndPage-container{
     width:100%;
     height:100%;
     padding-left:var(--l);
@@ -18,13 +18,24 @@
     margin-top:var(--xl);
 }
 
-.EPage-container .u-bold,.u-h1{
+.EndPage-container .u-bold,.u-h1{
     letter-spacing: -1.4px;
     line-height: 100%;
 }
-.StartPage-container .u-regular{
+.EndPage-container .u-regular{
     margin-top:var(--l);
     width:230px;
     word-break: break-word;
+}
+
+.exitButton{
+    top:32px;
+    width:160px;
+    height:56px;
+    border-radius:28px;
+    border:black solid 2px;
+}
+.exitButton:active{
+    background:rgba(0, 0, 0, 0.1);
 }
 

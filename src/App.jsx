@@ -1,4 +1,4 @@
-import React, {useCallback, useMemo, useState} from "react";
+import React, {useState, useRef} from "react";
 import TopBar from "./components/TopBar";
 import NavBar from "./components/NavBar";
 import VisualWindow from "./components/VisualWindow";
@@ -6,7 +6,8 @@ import CTA from "./components/CTA";
 import BreathScreen from "./components/BreathScreen";
 import Preloader from "./components/Preloader";
 import "./App.css";
-import { useDeviceOrientation } from './components/useDeviceOrientation';
+import {useAnimate} from "framer-motion";
+import {useDeviceOrientation } from './components/useDeviceOrientation';
 import {useVolumeLevel, VolumeIndicator} from 'react-volume-indicator';
 
 function App() {
@@ -15,11 +16,14 @@ function App() {
   const themeList = ["arrow curtain","dots","arrow matrix","strokes"];
   const [currIndex,setCurrIndex] = useState(0);
   const [loading,setLoading] = useState(true);
+  const [choosing,setChoosing] = useState(false);
   const handleChange = (index)=>{
     setCurrIndex(index);
   }
+
   const [thumbSwiper, setThumbSwiper] = useState(null);
   const [breathing, setBreathing] = useState(false);
+
   const handleStartBreathing = ()=>{
     setBreathing(true);
     startRecording();
@@ -45,8 +49,9 @@ function App() {
             <BreathScreen breathing={breathing} volume={volume} endBreathing={handleEndBreathing}/>
           </div>
         </div>
-        {breathing?<></>:<CTA setBreathing={handleStartBreathing}/>}
-        <NavBar setThumb={setThumbSwiper} setIndex={handleChange}/>
+        {breathing||choosing?<></>:<CTA setBreathing={handleStartBreathing}/>}
+        <NavBar setThumb={setThumbSwiper} setIndex={handleChange} 
+        setChoose={setChoosing}/>
       </div>
       <div className="spacer u-paper">
       </div>

@@ -14,6 +14,7 @@ export default function(props){
 
     const [starting,setStarting] = useState(false);
     const [looping,setLooping] = useState(false);
+    const [letOut, setLetOut] = useState(false);
     const [ending,setEnding] = useState(false);
 
     const [scope, animateScope] = useAnimate();
@@ -28,37 +29,39 @@ export default function(props){
 
     useEffect(()=>{
         if(props.breathing){
-            setText("Tap to stop breath");
+            setText("Breath session");
             setStarting(true);
             animateScope(scope.current,{height:[null,"100%","100%"]},
                     {ease:"easeInOut",duration:8,times:[0,0.25,1]}).then(()=>{
+                        setText("Tap to stop breath");
                         setStarting(false);
                         setLooping(true);
-                        animate(progress,[0,19],{duration:19,repeat:Infinity});
+                        animate(progress,14,{duration:14,repeat:Infinity});
                     });
         }else{
             setText("Start breath");
         }
     },[props.breathing]);
 
-    const currHeight=useTransform(progress,[0,4,11,19],[100,15,15,100]);
+    const currHeight=useTransform(progress,[0,8,10,14],[100,20,20,100]);
 
-    useMotionValueEvent(progress, "change", () => {
-        animateScope(scope.current,{height:`${currHeight.current}%`},{ease:"easeInOut"});
-        if(parseInt(progress.current)==4){
+    useMotionValueEvent(progress, "change", (latest) => {
+        animateScope(scope.current,{height:`${currHeight.current}%`});
+        if(parseInt(progress.current)==8){//time for hold
             setAirFlowAngle(180);
             setBreathText("Hold");
-        }else if(parseInt(progress.current)==0){
+        }else if(parseInt(progress.current)==0){//time for breath
             setAirFlowAngle(0);
             setBreathText("Breath in");
-        }else if(parseInt(progress.current)==11){
+            setLetOut(false);
+        }else if(parseInt(progress.current)==10){//time for letting out
             setBreathText("Let out");
+            setTimeout(()=>{setLetOut(true)},250);
         }
       });
 
-
     useEffect(()=>{
-        let mapped = easeOutQuint(clamp(props.volume,0,10)/10)*100;
+        let mapped = easeOutQuint(clamp(props.volume,0,10)/10)*50;
         animateScope(scope.current,{webkitBackdropFilter: `blur(${mapped}px)`,
             backdropFilter: `blur(${mapped}px)`})
     },[props.volume]);
@@ -67,25 +70,40 @@ export default function(props){
         if(looping){
             setLooping(false);
             setEnding(true);
+            setText("");
             progress.stop();
-            console.log(progress.current);
+            setText("you are the best");
             animateScope([[scope.current,{height:[null,"100%","100%"]},
-            {duration:6, times:[0,0.5,1],ease:"easeOut"}],
-            [scope.current,{height:["100%","10%"]},{duration:2,ease:"easeInOut"}]]).then(()=>{
-                animate(scope.current,{height:"50px"});//reset breath screen
-                setEnding(false);
-                props.endBreathing();
-            });
+                {duration:5, times:[0,0.5,1],ease:"anticipate"}]]);
         }
     }
+
+    const handleExit = ()=>{
+        animate(scope.current,{height:"50px"},{duration:2,ease:"anticipate"}).then(
+            ()=>{
+                setEnding(false);
+                props.endBreathing();
+            }
+        );//reset breath screen
+        }
+
     function choose(){
         if(starting){
             return <StartPage/>;
         }else if(looping){
             return (
                 <>
-                <div className="breathText u-h1 u-bold">
-                    {breathText}
+                <div className="breathText">
+                    <div className="u-h1 u-bold">
+                        {breathText}
+                    </div>
+                    {
+                        letOut?
+                        <div className="u-text u-relative notice">
+                        Breathe harder and <br/>see what happens. 
+                        </div>:
+                        <></>
+                    }
                 </div>
                 <div className="breathAnimate">
                     <AirFlow angle={airFlowAngle}/>
@@ -94,7 +112,7 @@ export default function(props){
             </>
             );
         }else if(ending){
-            return <EndPage/>;
+            return <EndPage handleExit={handleExit}/>;
         }
     }
     return (    

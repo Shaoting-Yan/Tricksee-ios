@@ -1,10 +1,11 @@
 import React, {useCallback, useMemo, useState, useRef} from "react";
 import "./NavBar.css";
 import arrow from "./assets/arrow.svg";
-import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
+import { motion, useMotionValue, useTransform,animate} from "framer-motion";
 import Thumbnails from "./Thumbnails";
 
 export default function(props){
+    const [timerHandle,setTimerHandle] = useState(-1);
     const y = useMotionValue(0);
     const yInput = [0, -130];
     const arrowRotate = useTransform(y,yInput,[
@@ -38,13 +39,25 @@ export default function(props){
     const handleDragEnd=(e,info)=>{
         if(y.current < -65){
             y.set(-130);
+            props.setChoose(true);
         }
         if(y.current > -65){
             y.set(0);
+            props.setChoose(false);
         }
     }
+    const setTimer=()=>{//retract the theme bar after 3 seconds
+        let timer = setTimeout(()=>{
+            animate(y,0,{duration:1});
+            props.setChoose(false);
+        },3000);
+        setTimerHandle(timer);
+    }
+
     return (
-    <div className="u-absolute NavBar-container u-flexColumn u-layer3">
+    <div className="u-absolute NavBar-container u-flexColumn u-layer3" 
+    onTouchStart={()=>{clearTimeout(timerHandle);}} 
+    onTouchEnd={setTimer}>
         <motion.div className="u-flexColumn u-flex-alignCenter 
         u-flex-justifyCenter indicator-container u-paper" 
         drag="y"
