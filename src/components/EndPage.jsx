@@ -15,7 +15,7 @@ export default function({handleExit}){
                 here are some tags for you!
             </div>
             <img src={tags} className="tags"/>
-            <div className="u-text u-relative u-textCenter exitButton u-flexColumn u-flex-justifyCenter"
+            <div className="u-regular u-text u-relative u-textCenter exitButton u-flexColumn u-flex-justifyCenter"
                 onClick={handleExit}>
                 exit session
             </div>
