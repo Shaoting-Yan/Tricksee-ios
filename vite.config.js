@@ -23,7 +23,10 @@ export default defineConfig({
   },
   workbox: {
     globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg,woff2}',
-    '/*.{js,css,html,ico,png,svg,jpg,woff2}']
+    '/*.{js,css,html,ico,png,svg,jpg,woff2}'],
+    workbox:{
+      importScripts: ["sw-code.js"]
+    }
   }
    })],
    base: '/Tricksee-ios/'
