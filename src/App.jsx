@@ -9,7 +9,6 @@ import "./App.css";
 import {useAnimate} from "framer-motion";
 import {useDeviceOrientation } from './components/useDeviceOrientation';
 import {useVolumeLevel, VolumeIndicator} from 'react-volume-indicator';
-import ReactGA from 'react-ga';
 
 function App() {
   const { orientation,motion, requestAccess, revokeAccess, error } = useDeviceOrientation();
@@ -18,9 +17,6 @@ function App() {
   const [currIndex,setCurrIndex] = useState(0);
   const [loading,setLoading] = useState(true);
   const [choosing,setChoosing] = useState(false);
-
-  const TRACKING_ID = "G-K853SF4HV7"; // OUR_TRACKING_ID
-  ReactGA.initialize(TRACKING_ID);
   
   const handleChange = (index)=>{
     setCurrIndex(index);
