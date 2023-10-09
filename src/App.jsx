@@ -45,6 +45,7 @@ function App() {
       category: 'Interaction',
       action: 'All'
     });
+    console.log("sent");
   }
   return (
     <>{loading?
