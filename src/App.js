@@ -1,7 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
+import ReactGA from 'react-ga';
+
 
 function App() {
+  const TRACKING_ID = "G-K853SF4HV7"; // OUR_TRACKING_ID
+  ReactGA.initialize(TRACKING_ID);
   return (
     <div className="App">
       <header className="App-header">
