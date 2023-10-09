@@ -19,8 +19,10 @@ function App() {
   const [loading,setLoading] = useState(true);
   const [choosing,setChoosing] = useState(false);
   
-  const TRACKING_ID = "G-K853SF4HV7"; // OUR_TRACKING_ID
-  ReactGA.initialize(TRACKING_ID);
+  useEffect(()=>{
+    const TRACKING_ID = "G-K853SF4HV7"; // OUR_TRACKING_ID
+    ReactGA.initialize(TRACKING_ID);
+  },[]);
 
   const handleChange = (index)=>{
     setCurrIndex(index);
@@ -32,7 +34,6 @@ function App() {
   const handleStartBreathing = ()=>{
     setBreathing(true);
     startRecording();
-    console.log("start breathing");
   }
   const handleEndBreathing = ()=>{
     setBreathing(false);//hello
@@ -46,7 +47,6 @@ function App() {
       category: 'Interaction',
       action: 'All'
     });
-    console.log("sent");
   }
   return (
     <>{loading?
