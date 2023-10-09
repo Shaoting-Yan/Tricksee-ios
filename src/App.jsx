@@ -32,6 +32,7 @@ function App() {
   const handleStartBreathing = ()=>{
     setBreathing(true);
     startRecording();
+    console.log("start breathing");
   }
   const handleEndBreathing = ()=>{
     setBreathing(false);//hello
