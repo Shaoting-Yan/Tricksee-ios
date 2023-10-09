@@ -1,4 +1,4 @@
-import React, {useState, useRef} from "react";
+import React, {useState, useRef, useEffect} from "react";
 import TopBar from "./components/TopBar";
 import NavBar from "./components/NavBar";
 import VisualWindow from "./components/VisualWindow";
@@ -18,7 +18,7 @@ function App() {
   const [currIndex,setCurrIndex] = useState(0);
   const [loading,setLoading] = useState(true);
   const [choosing,setChoosing] = useState(false);
-  
+
   useEffect(()=>{
     const TRACKING_ID = "G-K853SF4HV7"; // OUR_TRACKING_ID
     ReactGA.initialize(TRACKING_ID);
