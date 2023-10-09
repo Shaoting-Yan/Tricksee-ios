@@ -9,7 +9,7 @@ import "./App.css";
 import {useAnimate} from "framer-motion";
 import {useDeviceOrientation } from './components/useDeviceOrientation';
 import {useVolumeLevel, VolumeIndicator} from 'react-volume-indicator';
-import ReactGA from 'react-ga';
+import ReactGA from 'react-ga4';
 
 function App() {
   const { orientation,motion, requestAccess, revokeAccess, error } = useDeviceOrientation();
